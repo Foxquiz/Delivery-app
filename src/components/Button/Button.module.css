@@ -1,0 +1,32 @@
+.button {
+    align-self: flex-start;
+    border-radius: 6px;
+    border: none;
+    padding: 8px 30px;
+    font-size: 16px;
+    font-family: inherit;
+    cursor: pointer;
+    color: var(--text-light-color);
+    transition: background 0.25s;
+}
+
+
+.button:focus,
+.button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+}
+
+.accent {
+    background: var(--primary-color);
+}
+
+.accent:hover {
+    background: var(--primary-hover-color);
+}
+
+@media (prefers-color-scheme: light) {
+    .button {
+        background-color: var(--background-color);
+        color: var(--text);
+    }
+}

@@ -14,5 +14,10 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    'semi': ['error', 'always', {'omitLastInIneLineBlock': false}],
+    'comma-damgle': ['error', 'never'],
+    quotes: ['error', 'single'],
+    'react/prop-types': [0],
+    'indent': ['error', 'tab']
   },
 }
