@@ -1,12 +1,19 @@
-import Button from "./components/Button/Button"
+import Button from "./components/Button/Button";
+import Input from "./components/Input/Input";
+
 
 function App() {
-  
+
   return (
     <>
-    <Button>
-      Button
-    </Button>
+      <Button appearance="big">
+        Вход
+      </Button>
+      <Button>
+        Применить
+      </Button>
+      <Input placeholder="Email" />
+      <Input placeholder="Promo" />
     </>
   )
 }

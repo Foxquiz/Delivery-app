@@ -1,0 +1,35 @@
+.input {
+    padding: 20px;
+    border: 1px solid #EEE;
+    border-radius: 10px;
+    box-shadow: 15px 20px 45px 0px rgba(233, 233, 233, 0.25);
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--text-color);
+    background: #FFF;
+    transition: border-color 0.3ms ease-in-out, background 0.3ms ease-in-out;
+}
+
+.input::placeholder {
+    color: var(--text-gray-color);
+}
+
+.invalid {
+    border: 1px solid red;
+    background: rgb(68, 13, 13);
+}
+
+.input:hover {
+    background: rgba(233, 233, 233, 0.5);
+}
+
+.input:focus {
+    outline: none;
+}
+
+.input:focus-visible {
+    outline: none;
+    border-color: var(--primary-color);
+}

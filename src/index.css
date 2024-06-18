@@ -2,13 +2,28 @@
   --font: 'Open Sans';
   --primary-color: #FE724C;
   --primary-hover-color: #FF9579;
+  --primary-focus-color: #f75e34;
   --background-color: #FFFFFF;
   --text-light-color: #FFFFFF;
   --text-color: #000000;
   --text-secondary-color: #5B5B5E;
+  --text-gray-color:#C4C4C4;
   --separator-color: #D4D6E0;
 }
 
 body {
   font-family: "Open Sans", sans-serif;
+  background-color: var(--background-color);
 }
+
+/* @media (prefers-color-scheme: dark) {
+  body {
+    --primary-color: #FE724C;
+    --primary-hover-color: #FF9579;
+    --background-color: #000000;
+    --text-light-color: #000000;
+    --text-color: #FFFFFF;
+    --text-secondary-color: #5B5B5E;
+    --separator-color: #D4D6E0;
+  }
+} */
