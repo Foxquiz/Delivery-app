@@ -1,0 +1,75 @@
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border-right: 1px solid var(--separator-color);
+}
+
+.client {
+    margin-bottom: 47px;
+}
+
+.avatar {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 21px;
+    border-radius: 50%;
+}
+
+.client-name {
+    margin: 0;
+    margin-bottom: 7px;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.client-email {
+    margin: 0;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #9EA1B1;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    margin-bottom: auto;
+}
+
+.link {
+    padding-left: 37px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 23px;
+    text-decoration: none;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--text-color);
+}
+
+.menu-icon {
+    background-image: url('public/menu-icon.svg');
+}
+
+.cart-icon {
+    background-image: url('public/cart-icon.svg');
+}
+
+.exit{
+    display: flex;
+    gap: 9px;
+    justify-content: center;
+    align-items: center;
+}

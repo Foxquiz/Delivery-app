@@ -14,11 +14,11 @@
 
 .accent {
     border-radius: 28.5px;
-    background: var(--primary-color);
+    background-color: var(--primary-color);
 }
 
 .accent:hover {
-    background: var(--primary-hover-color);
+    background-color: var(--primary-hover-color);
 }
 
 .big {
@@ -46,5 +46,5 @@
 
 .button:active {
     outline: none;
-    background: var(--primary-focus-color);
+    background-color: var(--primary-focus-color);
 }
