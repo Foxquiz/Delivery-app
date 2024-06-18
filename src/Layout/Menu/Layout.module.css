@@ -59,6 +59,10 @@
     color: var(--text-color);
 }
 
+.active{
+    color: var(--primary-color);
+}
+
 .menu-icon {
     background-image: url('public/menu-icon.svg');
 }
