@@ -1,5 +1,6 @@
 export function Menu() {
     return (
-        <>Menu</>
+        <>
+            Menu</>
     )
 }
