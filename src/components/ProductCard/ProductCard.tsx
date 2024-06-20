@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 
 export function ProductCard(props: ProductCardProps) {
     return (
-        <Link to={'/'} className={clsx(styles.card)}>
+        <Link to={`/product/${props.id}`} className={clsx(styles.card)}>
             <div className={styles.top} style={{ backgroundImage: `url(${props.image})` }}>
                 <span className={clsx(styles.cost, styles.oval)}>
-                    {props.cost}{' '}
+                    {props.price}{' '}
                     <span className={clsx(styles['cost-currency'])}>₽</span>
                 </span>
                 <button className={clsx(styles['button-cart'])}>
@@ -21,7 +21,7 @@ export function ProductCard(props: ProductCardProps) {
             </div>
             <div className={styles.bottom}>
                 <h2 className={styles.title}>
-                    {props.title}
+                    {props.name}
                 </h2>
                 <p className={styles.descr}>
                     {props.ingridients}
