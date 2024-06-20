@@ -6,18 +6,14 @@ import { Product } from "../../interfaces/product.interface";
 import { useEffect, useState } from "react";
 import { ProductCard } from "../../components/ProductCard/ProductCard";
 import clsx from "clsx";
+import axios from "axios";
 
 export function Menu() {
     const [products, setProducts] = useState<Product[]>([]);
 
-    const getMenu = async (): Promise<Product[] | void> => {
+    const getMenu = async () => {
         try {
-
-            const res = await fetch(`${PREFIX}/products`);
-            if (!res.ok) {
-                return;
-            }
-            const data = await res.json() as Product[];
+            const {data} = await axios.get<Product[]>(`${PREFIX}/products`);
             setProducts(data);
         } catch (e) {
             console.error(e);
