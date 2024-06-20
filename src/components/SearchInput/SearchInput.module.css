@@ -1,0 +1,33 @@
+.input {
+    width: 256px;
+    padding: 16px 30px 16px 44px;
+    border-radius: 10px;
+    border: 1px solid #EFEFEF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--text-color);
+    background-color: #FCFCFD;
+    background-image: url('public/search-icon.svg');
+    background-repeat: no-repeat;
+    background-position: 18px center;
+    transition:  background-color 0.3ms ease-in-out;
+}
+
+.input::placeholder {
+    color: #9AA0B4;
+}
+
+.input:hover {
+    background-color: rgba(233, 233, 233, 0.5);
+}
+
+.input:focus {
+    outline: none;
+}
+
+.input:focus-visible {
+    outline: none;
+    border-color: var(--primary-color);
+}
