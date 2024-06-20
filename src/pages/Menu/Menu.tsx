@@ -4,19 +4,27 @@ import styles from './Menu.module.css'
 import { PREFIX } from "../../helpers/API";
 import { Product } from "../../interfaces/product.interface";
 import { useEffect, useState } from "react";
-import { ProductCard } from "../../components/ProductCard/ProductCard";
-import clsx from "clsx";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
+import { MenuList } from "./MenuList/MenuList";
 
 export function Menu() {
     const [products, setProducts] = useState<Product[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [error, setError] = useState<string | undefined>();
+
 
     const getMenu = async () => {
         try {
-            const {data} = await axios.get<Product[]>(`${PREFIX}/products`);
+            setIsLoading(true);
+            const { data } = await axios.get<Product[]>(`${PREFIX}/products`);
             setProducts(data);
+            setIsLoading(false);
         } catch (e) {
             console.error(e);
+            if (e instanceof AxiosError) {
+                setError(e.message);
+            }
+            setIsLoading(false);
             return;
         }
     };
@@ -32,20 +40,9 @@ export function Menu() {
                 <SearchInput placeholder="Введите блюдо или состав" />
             </header>
             <div className={styles['content']}>
-                <ul className={clsx(styles['list'], styles['list-reset'])}>
-                    {products.map(p => (
-                        <li key={p.id}>
-                            <ProductCard
-                                id={p.id}
-                                name={p.name}
-                                ingridients={p.ingredients.join(', ')}
-                                image={p.image}
-                                rating={p.rating}
-                                price={p.price}
-                            />
-                        </li>
-                    ))}
-                </ul>
+                {!isLoading && <MenuList products={products} />}
+                {isLoading && <>Loading products...</>}
+                {error && <>{error}</>}
             </div>
         </>
     )
