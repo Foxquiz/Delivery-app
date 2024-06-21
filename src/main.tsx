@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter, defer } from 'react-router-dom'
 // import { Menu } from "./pages/Menu/Menu";
 import { Cart } from "./pages/Cart/Cart";
 import { Error as ErrorPage } from "./pages/Error/Error";
@@ -30,8 +30,9 @@ const router = createBrowserRouter([
         element: <Product />,
         errorElement: <>Error</>,
         loader: async ({ params }) => {
-          const { data } = await axios.get(`${PREFIX}/products/${params.id}`);
-          return data;
+          return defer({
+            data: axios.get(`${PREFIX}/products/${params.id}`).then(data => data).catch(error => error)
+          })
         }
       }
     ]
