@@ -3,12 +3,44 @@ import Button from "../../components/Button/Button";
 import { HeaderTitle } from "../../components/HeaderTitle/HeaderTitle";
 import Input from "../../components/Input/Input";
 import styles from './Login.module.css'
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
+import axios, { AxiosError } from "axios";
+import { PREFIX } from "../../helpers/API";
+
+export type LoginForm = {
+    email: {
+        value: string;
+    };
+    password: {
+        value: string;
+    };
+};
 
 export function Login() {
-    const submit = (e: FormEvent) => {
+    const [error, setError] = useState<string | null>();
+    const submit = async (e: FormEvent) => {
         e.preventDefault();
-        console.log(e);
+        setError(null);
+        const target = e.target as typeof e.target & LoginForm;
+        const { email, password } = target;
+
+        console.log(email.value, password);
+        await sendLogin(email.value, password.value)
+    }
+
+    const sendLogin = async (email: string, password: string) => {
+        try {
+
+            const { data } = await axios.post(`${PREFIX}/auth/login`, {
+                email,
+                password
+            });
+            console.log(data);
+        } catch (error) {
+            if (error instanceof AxiosError) {
+                setError(error.response?.data.message);
+            }
+        }
     }
 
     return (
@@ -27,6 +59,7 @@ export function Login() {
                     </label>
                     <Input id="password" name="password" placeholder="Пароль" type="password" />
                 </div>
+                {error && <div className={styles.error}>{error}</div>}
                 <Button appearance="big" className={styles['login-btn']}>Вход</Button>
             </form>
             <div className={styles.link}>

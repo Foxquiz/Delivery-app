@@ -30,6 +30,10 @@
     color: var(--text-gray-color);
 }
 
+.login-btn{
+    align-self: center;
+}
+
 .link {
     align-self: center;
     text-align: center;
@@ -47,4 +51,12 @@
 .register-link {
     text-decoration: none;
     color: var(--primary-color);
+}
+
+.error{
+    font-size: 14px;
+    font-style: normal;
+    line-height: normal;
+    text-align: center;
+    color: red;
 }
