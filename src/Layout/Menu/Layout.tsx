@@ -1,9 +1,15 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import styles from './Layout.module.css'
 import clsx from "clsx";
 
 export function Layout() {
+
+    const navigate = useNavigate();
+    const logout = () => {
+        localStorage.removeItem('jwt');
+        navigate('/auth/login');
+    }
 
     return (
         <div className={styles['layout']}>
@@ -20,7 +26,7 @@ export function Layout() {
                     <NavLink className={({ isActive }) => clsx(styles['link'], styles['cart-icon'],
                         { [styles.active]: isActive })} to='/cart'>Корзина</NavLink>
                 </nav>
-                <Button className={styles['exit']}>
+                <Button className={styles['exit']} onClick={logout}>
                     <img className={styles['exit-icon']} src='public/exit-icon.svg' alt='Exit' />
                     Выйти
                 </Button>
