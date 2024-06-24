@@ -1,0 +1,50 @@
+.box {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.field:last-child {
+    margin-bottom: 74px;
+}
+
+.label {
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--text-gray-color);
+}
+
+.link {
+    align-self: center;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.text {
+    margin: 0;
+    color: var(--text-secondary-color);
+}
+
+.register-link {
+    text-decoration: none;
+    color: var(--primary-color);
+}

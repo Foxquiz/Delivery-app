@@ -2,13 +2,15 @@ import React, { Suspense, lazy } from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import { RouterProvider, createBrowserRouter, defer } from 'react-router-dom'
-// import { Menu } from "./pages/Menu/Menu";
 import { Cart } from "./pages/Cart/Cart";
 import { Error as ErrorPage } from "./pages/Error/Error";
 import { Layout } from './Layout/Menu/Layout.tsx'
 import { Product } from './components/Product/Product.tsx';
 import axios from 'axios';
 import { PREFIX } from './helpers/API.ts';
+import { AuthLayout } from './Layout/Auth/AuthLayout.tsx';
+import { Register } from './pages/Register/Register.tsx';
+import { Login } from './pages/Login/Login.tsx';
 
 const Menu = lazy(() => import('./pages/Menu/Menu.tsx'));
 
@@ -37,7 +39,20 @@ const router = createBrowserRouter([
       }
     ]
   },
-
+  {
+    path: '/auth',
+    element: <AuthLayout/>,
+    children: [
+      {
+        path: 'register',
+        element: <Register/>,
+      },
+      {
+        path: 'login',
+        element: <Login/>,
+      },
+    ]
+  },
   {
     path: '*',
     element: <ErrorPage />
