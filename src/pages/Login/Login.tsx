@@ -7,7 +7,7 @@ import { FormEvent, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../store/store";
 import { login, userActions } from "../../store/user.slice";
-import { RootState } from "@reduxjs/toolkit/query";
+import { RootState } from "../../store/store";
 
 export type LoginForm = {
     email: {
