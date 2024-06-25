@@ -47,7 +47,8 @@
 }
 
 .link {
-    position: relative;
+    display: flex;
+    gap: 10px;
     padding-left: 37px;
     background-repeat: no-repeat;
     background-position: left center;
@@ -87,18 +88,15 @@
     gap: 45px;
 }
 
-.link span {
-    position: absolute;
-    display: block;
-    top: -5px;
-    right: 0px;
-    padding-top: 1px;
-    width: 20px;
-    height: 20px;
+.cart-count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     background-color: var(--primary-color);
     font-size: 12px;
     font-weight: 600;
     color: var(--text-light-color);
-    text-align: center;
 }

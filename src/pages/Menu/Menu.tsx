@@ -3,7 +3,7 @@ import { HeaderTitle } from "../../components/HeaderTitle/HeaderTitle";
 import styles from './Menu.module.css'
 import { PREFIX } from "../../helpers/API";
 import { Product } from "../../interfaces/product.interface";
-import { FormEventHandler, useEffect, useState } from "react";
+import { ChangeEvent, FormEventHandler, useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 import { MenuList } from "./MenuList/MenuList";
 
@@ -15,16 +15,20 @@ export function Menu() {
     const [products, setProducts] = useState<Product[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | undefined>();
+    const [filter, setFilter] = useState<string>();
 
+    useEffect(() => {
+        getMenu(filter);
+    }, [filter])
 
-    const getMenu = async (searchString = '') => {
+    const getMenu = async (searchString?: string) => {
         try {
             setIsLoading(true);
-            let request = 'products';
-            if (searchString) {
-                request = `products?name=${searchString}`
-            }
-            const { data } = await axios.get<Product[]>(`${PREFIX}/${request}`);
+            const { data } = await axios.get<Product[]>(`${PREFIX}/products`, {
+                params: {
+                    name: searchString
+                }
+            });
             setProducts(data);
             setIsLoading(false);
         } catch (e) {
@@ -37,25 +41,22 @@ export function Menu() {
         }
     };
 
-    useEffect(() => {
-        getMenu();
-    }, [])
-
-    const search: FormEventHandler<HTMLInputElement> = (e) => {
-        const target = e.target as typeof e.target & Search;
-        getMenu(target.value);
+    const search = (e: ChangeEvent<HTMLInputElement>) => {
+        setFilter(e.target.value);
     }
 
     return (
         <>
             <header className={styles['header']}>
                 <HeaderTitle>Меню</HeaderTitle>
-                <SearchInput name='search' placeholder="Введите блюдо или состав" onInput={search} />
+                <SearchInput name='search' placeholder="Введите блюдо или состав" onChange={search} />
             </header>
             <div className={styles['content']}>
-                {!isLoading && <MenuList products={products} />}
-                {isLoading && <>Loading products...</>}
                 {error && <>{error}</>}
+                {!isLoading && products.length>0 && <MenuList products={products} />}
+                {isLoading && <>Loading products...</>}
+                {!isLoading && products.length===0 && <>По вашему запросу ничего не найдено, попробуйте изменить запрос.</>}
+
             </div>
         </>
     )

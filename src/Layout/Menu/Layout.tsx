@@ -22,6 +22,8 @@ export function Layout() {
         dispatch(getProfile());
     }, [dispatch])
 
+    const cartCount = items.reduce((acc, item) => acc += item.count, 0);
+
     return (
         <div className={styles['layout']}>
             <div className={styles['sidebar']}>
@@ -36,9 +38,9 @@ export function Layout() {
                     )} to='/'>Меню</NavLink>
                     <NavLink className={({ isActive }) => clsx(styles['link'], styles['cart-icon'],
                         { [styles.active]: isActive })} to='/cart'>Корзина
-                        <span>
-                            {items.reduce((acc, item) => acc += item.count, 0)}
-                        </span>
+                        {Boolean(cartCount) && <span className={styles['cart-count']}>
+                            {cartCount}
+                        </span>}
                     </NavLink>
                 </nav>
                 <Button className={styles['exit']} onClick={logout}>
