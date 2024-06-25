@@ -47,6 +47,7 @@
 }
 
 .link {
+    position: relative;
     padding-left: 37px;
     background-repeat: no-repeat;
     background-position: left center;
@@ -59,7 +60,7 @@
     color: var(--text-color);
 }
 
-.active{
+.active {
     color: var(--primary-color);
 }
 
@@ -71,7 +72,7 @@
     background-image: url('public/cart-icon.svg');
 }
 
-.exit{
+.exit {
     display: flex;
     gap: 9px;
     justify-content: center;
@@ -84,4 +85,20 @@
     flex-basis: 100%;
     padding: 39px 60px;
     gap: 45px;
+}
+
+.link span {
+    position: absolute;
+    display: block;
+    top: -5px;
+    right: 0px;
+    padding-top: 1px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-light-color);
+    text-align: center;
 }

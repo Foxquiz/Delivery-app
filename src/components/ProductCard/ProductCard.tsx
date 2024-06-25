@@ -2,8 +2,19 @@ import clsx from "clsx";
 import { ProductCardProps } from "./ProductCard.props";
 import styles from './ProductCard.module.css'
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../store/store";
+import { cartActions } from "../../store/cart.slice";
+import { MouseEvent } from "react";
 
 export function ProductCard(props: ProductCardProps) {
+    const dispatch = useDispatch<AppDispatch>();
+
+    const add = (e: MouseEvent) => {
+        e.preventDefault();
+        dispatch(cartActions.add(props.id));
+    }
+
     return (
         <Link to={`/product/${props.id}`} className={clsx(styles.card)}>
             <div className={styles.top} style={{ backgroundImage: `url(${props.image})` }}>
@@ -11,7 +22,7 @@ export function ProductCard(props: ProductCardProps) {
                     {props.price}{' '}
                     <span className={clsx(styles['cost-currency'])}>₽</span>
                 </span>
-                <button className={clsx(styles['button-cart'])}>
+                <button className={clsx(styles['button-cart'])} onClick={add}>
                     <img className={clsx(styles['bag-img'])} src="public/bag-icon.svg" alt="Добавление в корзину" />
                 </button>
                 <span className={clsx(styles.rate, styles.oval)}>

@@ -11,6 +11,8 @@ export function Layout() {
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
     const profile = useSelector((s: RootState) => s.user.profile);
+    const items = useSelector((s: RootState) => s.cart.items);
+
     const logout = () => {
         dispatch(userActions.logout())
         navigate('/auth/login');
@@ -33,7 +35,11 @@ export function Layout() {
                         { [styles.active]: isActive }
                     )} to='/'>Меню</NavLink>
                     <NavLink className={({ isActive }) => clsx(styles['link'], styles['cart-icon'],
-                        { [styles.active]: isActive })} to='/cart'>Корзина</NavLink>
+                        { [styles.active]: isActive })} to='/cart'>Корзина
+                        <span>
+                            {items.reduce((acc, item) => acc += item.count, 0)}
+                        </span>
+                    </NavLink>
                 </nav>
                 <Button className={styles['exit']} onClick={logout}>
                     <img className={styles['exit-icon']} src='public/exit-icon.svg' alt='Exit' />
