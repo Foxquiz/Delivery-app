@@ -26,7 +26,7 @@ export function Layout() {
                 <div className={styles['client']}>
                     <img className={styles['avatar']} src='public/avatar.jpg' alt='Аватар пользователя' />
                     <p className={styles['client-name']}>{profile?.name}</p>
-                    <p className={styles['client-email']}>{profile?.address}</p>
+                    <p className={styles['client-email']}>{profile?.email}</p>
                 </div>
                 <nav className={styles['menu']}>
                     <NavLink className={({ isActive }) => clsx(styles['link'], styles['menu-icon'],
