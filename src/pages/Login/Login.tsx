@@ -3,13 +3,11 @@ import Button from "../../components/Button/Button";
 import { HeaderTitle } from "../../components/HeaderTitle/HeaderTitle";
 import Input from "../../components/Input/Input";
 import styles from './Login.module.css'
-import { FormEvent, useState } from "react";
-import axios, { AxiosError } from "axios";
-import { PREFIX } from "../../helpers/API";
-import { LoginResponse } from "../../interfaces/auth.interface";
-import { useDispatch } from "react-redux";
+import { FormEvent, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../store/store";
-import { userActions } from "../../store/user.slice";
+import { login, userActions } from "../../store/user.slice";
+import { RootState } from "@reduxjs/toolkit/query";
 
 export type LoginForm = {
     email: {
@@ -21,13 +19,19 @@ export type LoginForm = {
 };
 
 export function Login() {
-    const [error, setError] = useState<string | null>();
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
+    const {jwt, loginErrorMessage} = useSelector((s: RootState) => s.user);
+
+    useEffect(() => {
+        if (jwt) {
+            navigate('/');
+        }
+    }, [jwt, navigate])
 
     const submit = async (e: FormEvent) => {
         e.preventDefault();
-        setError(null);
+        dispatch(userActions.clearLoginError());
         const target = e.target as typeof e.target & LoginForm;
         const { email, password } = target;
 
@@ -36,18 +40,7 @@ export function Login() {
     }
 
     const sendLogin = async (email: string, password: string) => {
-        try {
-            const { data } = await axios.post<LoginResponse>(`${PREFIX}/auth/login`, {
-                email,
-                password
-            });
-            dispatch(userActions.addJwt(data.access_token));
-            navigate('/');
-        } catch (error) {
-            if (error instanceof AxiosError) {
-                setError(error.response?.data.message);
-            }
-        }
+        dispatch(login({ email, password }))
     }
 
     return (
@@ -66,7 +59,7 @@ export function Login() {
                     </label>
                     <Input id="password" name="password" placeholder="Пароль" type="password" />
                 </div>
-                {error && <div className={styles.error}>{error}</div>}
+                {loginErrorMessage && <div className={styles.error}>{loginErrorMessage}</div>}
                 <Button appearance="big" className={styles['login-btn']}>Вход</Button>
             </form>
             <div className={styles.link}>
