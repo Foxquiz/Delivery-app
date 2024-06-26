@@ -3,7 +3,7 @@ import { HeaderTitle } from "../../components/HeaderTitle/HeaderTitle";
 import styles from './Menu.module.css'
 import { PREFIX } from "../../helpers/API";
 import { Product } from "../../interfaces/product.interface";
-import { ChangeEvent, FormEventHandler, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 import { MenuList } from "./MenuList/MenuList";
 

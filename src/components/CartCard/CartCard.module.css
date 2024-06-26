@@ -1,0 +1,82 @@
+.item {
+    display: flex;
+    flex-basis: 100%;
+    max-width: 515px;
+    gap: 20px;
+}
+
+.img {
+    display: block;
+    width: 82px;
+    height: 82px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.description-box {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    margin-right: auto;
+}
+
+.title {
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 18.214px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: var(--text-color);
+}
+
+.cost {
+    margin: 0;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: var(--primary-color);
+}
+
+.count-box {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    align-self: flex-start;
+}
+
+.button {
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 29px;
+    height: 29px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: 1px solid var(--primary-color);
+}
+
+.button img {
+    max-width: 100%;
+    object-fit: fill;
+}
+
+.counter {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: var(--text-color);
+}
+
+.button-increase {
+    background: var(--primary-color);
+}
+
+.button-remove{
+    border: none;
+}

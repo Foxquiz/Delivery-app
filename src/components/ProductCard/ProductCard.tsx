@@ -19,7 +19,7 @@ export function ProductCard(props: ProductCardProps) {
         <Link to={`/product/${props.id}`} className={clsx(styles.card)}>
             <div className={styles.top} style={{ backgroundImage: `url(${props.image})` }}>
                 <span className={clsx(styles.cost, styles.oval)}>
-                    {props.price}{' '}
+                    {props.price}&nbsp;
                     <span className={clsx(styles['cost-currency'])}>₽</span>
                 </span>
                 <button className={clsx(styles['button-cart'])} onClick={add}>
