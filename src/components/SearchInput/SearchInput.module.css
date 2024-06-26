@@ -9,7 +9,7 @@
     line-height: normal;
     color: var(--text-color);
     background-color: #FCFCFD;
-    background-image: url('public/search-icon.svg');
+    background-image: url('/public/search-icon.svg');
     background-repeat: no-repeat;
     background-position: 18px center;
     transition:  background-color 0.3ms ease-in-out;

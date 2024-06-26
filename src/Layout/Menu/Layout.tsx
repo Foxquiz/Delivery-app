@@ -28,7 +28,7 @@ export function Layout() {
         <div className={styles['layout']}>
             <div className={styles['sidebar']}>
                 <div className={styles['client']}>
-                    <img className={styles['avatar']} src='public/avatar.jpg' alt='Аватар пользователя' />
+                    <img className={styles['avatar']} src='/public/avatar.jpg' alt='Аватар пользователя' />
                     <p className={styles['client-name']}>{profile?.name}</p>
                     <p className={styles['client-email']}>{profile?.email}</p>
                 </div>
@@ -44,7 +44,7 @@ export function Layout() {
                     </NavLink>
                 </nav>
                 <Button className={styles['exit']} onClick={logout}>
-                    <img className={styles['exit-icon']} src='public/exit-icon.svg' alt='Exit' />
+                    <img className={styles['exit-icon']} src='/public/exit-icon.svg' alt='Exit' />
                     Выйти
                 </Button>
             </div>
