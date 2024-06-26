@@ -56,7 +56,6 @@ export function Menu() {
                 {!isLoading && products.length>0 && <MenuList products={products} />}
                 {isLoading && <>Loading products...</>}
                 {!isLoading && products.length===0 && <>По вашему запросу ничего не найдено, попробуйте изменить запрос.</>}
-
             </div>
         </>
     )

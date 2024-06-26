@@ -14,6 +14,7 @@ import { Login } from './pages/Login/Login.tsx';
 import { RequireAuth } from './helpers/RequireAith.tsx';
 import { Provider } from 'react-redux';
 import { store } from './store/store.ts';
+import { Success } from './pages/Success/Success.tsx';
 
 const Menu = lazy(() => import('./pages/Menu/Menu.tsx'));
 
@@ -39,7 +40,11 @@ const router = createBrowserRouter([
             data: axios.get(`${PREFIX}/products/${params.id}`).then(data => data).catch(error => error)
           })
         }
-      }
+      },
+      {
+        path: '/success',
+        element: <Success />
+      },
     ]
   },
   {
