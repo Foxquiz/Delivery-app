@@ -103,7 +103,8 @@ export function Cart() {
                         <span className={styles['currency']}>&nbsp;₽</span></p>
                 </li>
             </ul>
-            <Button appearance="big" className={styles['order-btn']} onClick={order}>оформить</Button>
+            <Button appearance="big" className={styles['order-btn']} onClick={order}
+                disabled={items.length === 0}>оформить</Button>
         </div>
     )
 }

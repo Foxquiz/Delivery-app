@@ -49,3 +49,7 @@
     outline: none;
     background-color: var(--primary-focus-color);
 }
+
+.button:disabled {
+    background-color: var(--primary-disabled-color);
+}
