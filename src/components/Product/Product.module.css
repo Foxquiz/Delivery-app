@@ -1,0 +1,162 @@
+.card-box {
+    max-width: 660px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.button-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 38px;
+    height: 38px;
+    width: 38px;
+    border: none;
+    border-radius: 20%;
+    box-shadow: 5px 10px 20px 0 rgba(211, 209, 216, 0.3);
+    background-color: var(--background-color);
+    transition: backdroung 0.3ms ease-in-out;
+}
+
+.button-nav:hover {
+    background-color: rgba(211, 209, 216, 0.5);
+}
+
+.title {
+    margin-right: auto;
+}
+
+.button-cart {
+    padding-left: 44px;
+    background-image: url('/public/bag-icon.svg');
+    background-repeat: no-repeat;
+    background-position: left 15px center;
+}
+
+.card {
+    display: flex;
+    gap: 50px;
+}
+
+.img-wrapper {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    min-height: 100%;
+    width: 100%;
+    max-width: 323px;
+    border-radius: 18.214px;
+}
+
+.product-img {
+    position: absolute;
+    object-fit: cover;
+    object-position: 20% 100%;
+    min-height: 100%;
+    width: 100%;
+    max-width: 323px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    padding-bottom: 30px;
+}
+
+.list-reset {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.list-cost {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.item-cost {
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-cost:not(:last-child) {
+    padding-bottom: 7px;
+    border-bottom: 1px solid #F1F2F3;
+}
+
+.cost-title {
+    margin: 0;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--text-color);
+}
+
+.cost-value {
+    margin: 0;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--text-color);
+}
+
+.items-count {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    color: #BEBEBE;
+}
+
+.currency {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #9796A1;
+}
+
+.rate {
+    margin: 0;
+    padding: 6px 10px;
+    font-size: 12.143px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: var(--text-color);
+    border-radius: 20px;
+    background-color: var(--background-color);
+    box-shadow: 0px 6.071px 24.286px 0px rgba(254, 114, 76, 0.20);
+}
+
+.ingridients {
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 14.571px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: var(--text-secondary-color);
+}
+
+.list-ingredients {
+    margin: 0;
+}
+
+.ingridient {
+    font-size: 14.571px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text-secondary-color);
+    text-transform: capitalize;
+}
