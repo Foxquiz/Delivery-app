@@ -15,6 +15,8 @@ export function ProductCard(props: ProductCardProps) {
         dispatch(cartActions.add(props.id));
     }
 
+    const ingridientsNormalized = props.ingridients[0].toUpperCase() + props.ingridients.slice(1);
+
     return (
         <Link to={`/product/${props.id}`} className={clsx(styles.card)}>
             <div className={styles.top} style={{ backgroundImage: `url(${props.image})` }}>
@@ -35,7 +37,7 @@ export function ProductCard(props: ProductCardProps) {
                     {props.name}
                 </h2>
                 <p className={styles.descr}>
-                    {props.ingridients}
+                    {ingridientsNormalized}
                 </p>
             </div>
         </Link>
