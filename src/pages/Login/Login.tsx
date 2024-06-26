@@ -34,8 +34,6 @@ export function Login() {
         dispatch(userActions.clearLoginError());
         const target = e.target as typeof e.target & LoginForm;
         const { email, password } = target;
-
-        console.log(email.value, password);
         await sendLogin(email.value, password.value)
     }
 
