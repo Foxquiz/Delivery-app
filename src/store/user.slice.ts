@@ -39,7 +39,7 @@ export const login = createAsyncThunk('user/login',
     }
 )
 
-export const register = createAsyncThunk('user/register',
+export const registerUser = createAsyncThunk('user/register',
     async (params: { email: string, password: string, name: string }) => {
         try {
             const { data } = await axios.post<LoginResponse>(`${PREFIX}/auth/register`, {
@@ -95,13 +95,13 @@ export const userSlice = createSlice({
         builder.addCase(getProfile.fulfilled, (state, action) => {
             state.profile = action.payload;
         });
-        builder.addCase(register.fulfilled, (state, action) => {
+        builder.addCase(registerUser.fulfilled, (state, action) => {
             if (!action.payload) {
                 return;
             }
             state.jwt = action.payload.access_token;
         });
-        builder.addCase(register.rejected, (state, action) => {
+        builder.addCase(registerUser.rejected, (state, action) => {
             state.registerErrorMessage = action.error.message;
         });
 
