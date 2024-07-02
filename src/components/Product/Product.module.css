@@ -32,7 +32,7 @@
 
 .button-cart {
     padding-left: 44px;
-    background-image: url('/public/bag-icon.svg');
+    background-image: url('public/bag-icon.svg');
     background-repeat: no-repeat;
     background-position: left 15px center;
 }

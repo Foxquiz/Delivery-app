@@ -6,7 +6,6 @@ export function loadState<T>(key: string): T | undefined {
         }
         return JSON.parse(jsonState);
     } catch (error) {
-        console.error(error);
         return undefined;
     }
 }
