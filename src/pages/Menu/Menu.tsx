@@ -16,10 +16,29 @@ export function Menu() {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | undefined>();
     const [filter, setFilter] = useState<string>();
+    const [onlineEvent, setOnlineEvent] = useState<boolean>(true);
 
     useEffect(() => {
         getMenu(filter);
-    }, [filter])
+    }, [filter, onlineEvent])
+
+    useEffect(() => {
+        const handleOnline = () => {
+            setOnlineEvent(true)
+        }
+
+        const handleOffline = () => {
+            setOnlineEvent(false)
+        }
+        window.addEventListener('online', handleOnline);
+        window.addEventListener('offline', handleOffline);
+
+        return () => {
+            window.removeEventListener('online', handleOnline);
+            window.removeEventListener('offline', handleOffline);
+        }
+    }, [])
+
 
     const getMenu = async (searchString?: string) => {
         try {
@@ -31,9 +50,13 @@ export function Menu() {
             });
             setProducts(data);
             setIsLoading(false);
+            setError(undefined);
         } catch (e) {
-            console.error(e);
             if (e instanceof AxiosError) {
+                if (e.request) {
+                    setError('Что-то пошло не так, проверьте подключение к интернету');
+                    return;
+                }
                 setError(e.message);
             }
             setIsLoading(false);
@@ -53,9 +76,9 @@ export function Menu() {
             </header>
             <div className={styles['content']}>
                 {error && <>{error}</>}
-                {!isLoading && products.length>0 && <MenuList products={products} />}
-                {isLoading && <>Loading products...</>}
-                {!isLoading && products.length===0 && <>По вашему запросу ничего не найдено, попробуйте изменить запрос.</>}
+                {!isLoading && products.length > 0 && <MenuList products={products} />}
+                {isLoading && !error && <>Загрузка блюд...</>}
+                {!isLoading && products.length === 0 && !error && <>По вашему запросу ничего не найдено, попробуйте изменить запрос.</>}
             </div>
         </>
     )

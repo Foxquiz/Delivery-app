@@ -4,7 +4,7 @@ import { AppDispatch, RootState } from "../../store/store";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { Product } from "../../interfaces/product.interface";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { PREFIX } from "../../helpers/API";
 import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
@@ -20,6 +20,9 @@ export function Cart() {
     const jwt = useSelector((s: RootState) => s.user.jwt);
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
+    const [onlineEvent, setOnlineEvent] = useState<boolean>(true);
+    const [error, setError] = useState<string | undefined>();
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const getItem = async (id: number) => {
         const { data } = await axios.get<Product>(`${PREFIX}/products/${id}`);
@@ -33,7 +36,24 @@ export function Cart() {
 
     useEffect(() => {
         loadAllItems();
-    }, [items]);
+    }, [items, onlineEvent]);
+
+    useEffect(() => {
+        const handleOnline = () => {
+            setOnlineEvent(true)
+        }
+
+        const handleOffline = () => {
+            setOnlineEvent(false)
+        }
+        window.addEventListener('online', handleOnline);
+        window.addEventListener('offline', handleOffline);
+
+        return () => {
+            window.removeEventListener('online', handleOnline);
+            window.removeEventListener('offline', handleOffline);
+        }
+    }, [])
 
     const order = async () => {
         try {
@@ -46,12 +66,19 @@ export function Cart() {
             });
             dispatch(cartActions.clean());
             navigate('/success');
-        } catch (error) {
-            console.log(error);
+        } catch (e) {
+            if (e instanceof AxiosError) {
+                if (e.request) {
+                    setError('Что-то пошло не так, проверьте подключение к интернету');
+                    return;
+                }
+                setError(e.message);
+            }
+            setIsLoading(false);
+            return;
         }
 
     }
-
 
     const productsSum = items.reduce((acc, item) => {
         const product = cartProducts.find(product => product.id === item.id);
@@ -66,7 +93,10 @@ export function Cart() {
     return (
         <div className={styles['cart-box']}>
             <HeaderTitle className={styles['cart-title']}>Корзина</HeaderTitle>
-            <ul className={clsx(styles['list-items'], styles['list-reset'])}>
+            {error && <>{error}</>}
+            {isLoading && !error && <>Загрузка корзины...</>}
+            {!isLoading && items.length === 0 && !error && <>Ваша корзина пуста</>}
+            {!isLoading && items.length > 0 && <ul className={clsx(styles['list-items'], styles['list-reset'])}>
                 {items.map((item) => {
                     const product = cartProducts.find(product => product.id === item.id);
                     if (!product) {
@@ -80,7 +110,7 @@ export function Cart() {
                         />
                     )
                 })}
-            </ul>
+            </ul>}
             <ul className={clsx(styles['list-cost'], styles['list-reset'])}>
                 <li className={styles['item-cost']}>
                     <h3 className={styles['cost-title']}>Итог</h3>

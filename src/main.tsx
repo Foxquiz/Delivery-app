@@ -34,10 +34,10 @@ const router = createBrowserRouter([
       {
         path: '/product/:id',
         element: <Product />,
-        errorElement: <>Error</>,
+        errorElement: <ErrorPage message={'Такого продукта не существует.'} />,
         loader: async ({ params }) => {
           return defer({
-            data: axios.get(`${PREFIX}/products/${params.id}`).then(data => data).catch(error => error)
+            data: axios.get(`${PREFIX}/products/${params.id}`).then(data => data).catch(error => { error; console.log(error.response.data.message) })
           })
         }
       },
