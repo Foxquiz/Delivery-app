@@ -27,14 +27,51 @@ export function Layout() {
 
     const cartCount = items.reduce((acc, item) => acc += item.count, 0);
 
-    useOnClickOutside(sidebar as React.MutableRefObject<HTMLDivElement>, ()=> {
+    useOnClickOutside(sidebar as React.MutableRefObject<HTMLDivElement>, () => {
         if (sidebarState) {
             setSidebarState(!sidebarState);
         }
     })
+
     const handleClick = () => {
         setSidebarState(!sidebarState);
     }
+
+    useEffect(() => {
+        let startTouchX = 0;
+        let endTouchX = 0;
+        let startTouchY = 0;
+        let endTouchY = 0;
+
+        const getStartTouch = (e: TouchEvent) => {
+            startTouchX = e.changedTouches[0].pageX;
+            startTouchY = e.changedTouches[0].pageY;
+        }
+
+        const getEndTouch = (e: TouchEvent) => {
+            endTouchX = e.changedTouches[0].pageX;
+            endTouchY = e.changedTouches[0].pageY;
+
+            if (startTouchX < 100 &&
+                Math.abs(endTouchY - startTouchY) < 40 &&
+                endTouchX > startTouchX) {
+                setSidebarState(true);
+            }
+            if (startTouchX < 200 &&
+                Math.abs(endTouchY - startTouchY) < 40 &&
+                endTouchX < startTouchX) {
+                setSidebarState(false);
+            }
+        }
+
+        document.addEventListener('touchstart', getStartTouch);
+        document.addEventListener('touchend', getEndTouch)
+
+        return () => {
+            document.removeEventListener('touchstart', getStartTouch);
+            document.removeEventListener('touchend', getEndTouch);
+        };
+    }, [])
 
 
     return (
@@ -50,8 +87,8 @@ export function Layout() {
                 { [styles['open-sidebar']]: sidebarState }
             )}>
                 <div className={styles['client']}>
-                    <img className={styles['avatar']} src='/public/avatar.jpg' alt='Аватар пользователя' 
-                    onClick={handleClick}/>
+                    <img className={styles['avatar']} src='/public/avatar.jpg' alt='Аватар пользователя'
+                        onClick={handleClick} />
                     <p className={styles['client-name']}>{profile?.name}</p>
                     <p className={styles['client-email']}>{profile?.email}</p>
                 </div>
