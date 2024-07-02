@@ -27,8 +27,6 @@ export function Login() {
         resolver: zodResolver(LoginSchema)
     });
 
-    console.log(errors);
-
     useEffect(() => {
         if (jwt) {
             navigate('/');

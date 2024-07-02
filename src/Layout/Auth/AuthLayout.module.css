@@ -1,6 +1,8 @@
 .layout {
     display: flex;
     min-height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .sidebar {
@@ -33,7 +35,7 @@
         align-items: flex-start;
     }
 
-    .sidebar img{
+    .sidebar img {
         max-height: 100%;
     }
 }

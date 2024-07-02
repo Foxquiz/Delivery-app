@@ -33,14 +33,14 @@ export function CartCard(props: CartCardProps) {
             </div>
             <div className={styles['count-box']}>
                 <button className={clsx(styles['button'], styles['button-descrease'])} onClick={removeItem}>
-                    <img src='/public/cart-btn-descrease.svg' alt='Удалить из корзины' />
+                    <img src='public/cart-btn-descrease.svg' alt='Удалить из корзины' />
                 </button>
                 <p className={styles.counter}>{props.count}</p>
                 <button className={clsx(styles['button'], styles['button-increase'])} onClick={addItem}>
-                    <img src='/public/cart-btn-increase.svg' alt='Добавить в корзину' />
+                    <img src='public/cart-btn-increase.svg' alt='Добавить в корзину' />
                 </button>
                 <button className={clsx(styles['button'], styles['button-remove'])} onClick={deleteItem}>
-                    <img src='/public/cart-btn-remove.svg' alt='Удалить позицию' />
+                    <img src='public/cart-btn-remove.svg' alt='Удалить позицию' />
                 </button>
             </div>
         </li>
