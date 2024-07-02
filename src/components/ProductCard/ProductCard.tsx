@@ -25,11 +25,11 @@ export function ProductCard(props: ProductCardProps) {
                     <span className={clsx(styles['cost-currency'])}>₽</span>
                 </span>
                 <button className={clsx(styles['button-cart'])} onClick={add}>
-                    <img className={clsx(styles['bag-img'])} src="public/bag-icon.svg" alt="Добавление в корзину" />
+                    <img className={clsx(styles['bag-img'])} src="/bag-icon.svg" alt="Добавление в корзину" />
                 </button>
                 <span className={clsx(styles.rate, styles.oval)}>
                     {props.rating}&nbsp;
-                    <img src="public/star-icon.svg" alt="Иконка звезды" />
+                    <img src="/star-icon.svg" alt="Иконка звезды" />
                 </span>
             </div>
             <div className={styles.bottom}>

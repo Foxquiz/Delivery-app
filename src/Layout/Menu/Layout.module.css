@@ -128,11 +128,11 @@
 }
 
 .menu-icon {
-    background-image: url('public/menu-icon.svg');
+    background-image: url('/menu-icon.svg');
 }
 
 .cart-icon {
-    background-image: url('public/cart-icon.svg');
+    background-image: url('/cart-icon.svg');
 }
 
 .exit {

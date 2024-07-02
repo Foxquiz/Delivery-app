@@ -22,7 +22,7 @@ export function ProductItem({ data }: { data: ProductType }) {
         <div className={styles['card-box']}>
             <div className={styles['header']}>
                 <button className={styles['button-nav']} onClick={() => navigate('/')}>
-                    <img src="public/arrow.svg" />
+                    <img src="/arrow.svg" />
                 </button>
                 <HeaderTitle className={styles['title']}>{data.name}</HeaderTitle>
                 <Button className={styles['button-cart']} onClick={add}>В корзину</Button>
@@ -43,7 +43,7 @@ export function ProductItem({ data }: { data: ProductType }) {
                             <h3 className={styles['cost-title']}>Рейтинг</h3>
                             <p className={styles.rate}>
                                 {data.rating}&nbsp;
-                                <img src="public/star-icon.svg" alt="Иконка звезды" />
+                                <img src="/star-icon.svg" alt="Иконка звезды" />
                             </p>
                         </li>
                     </ul>

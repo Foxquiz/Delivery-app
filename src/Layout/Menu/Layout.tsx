@@ -81,13 +81,13 @@ export function Layout() {
                     [styles['sidebar-open-btn--close']]: sidebarState,
                 })}
                 onClick={handleClick}>
-                <img className={styles['avatar']} src='public/avatar.jpg' alt='Аватар пользователя' />
+                <img className={styles['avatar']} src='/avatar.jpg' alt='Аватар пользователя' />
             </button>
             <div ref={sidebar} className={clsx(styles['sidebar'],
                 { [styles['open-sidebar']]: sidebarState }
             )}>
                 <div className={styles['client']}>
-                    <img className={styles['avatar']} src='public/avatar.jpg' alt='Аватар пользователя'
+                    <img className={styles['avatar']} src='/avatar.jpg' alt='Аватар пользователя'
                         onClick={handleClick} />
                     <p className={styles['client-name']}>{profile?.name}</p>
                     <p className={styles['client-email']}>{profile?.email}</p>
@@ -104,7 +104,7 @@ export function Layout() {
                     </NavLink>
                 </nav>
                 <Button className={styles['exit']} onClick={logout}>
-                    <img className={styles['exit-icon']} src='public/exit-icon.svg' alt='Exit' />
+                    <img className={styles['exit-icon']} src='/exit-icon.svg' alt='Exit' />
                     Выйти
                 </Button>
             </div>
