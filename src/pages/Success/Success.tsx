@@ -7,7 +7,7 @@ export function Success() {
     
     return (
         <div className={styles['success-box']}>
-            <img className={styles['img']} src="public/order-success.png" alt="Пицца" />
+            <img className={styles['img']} src="/order-success.png" alt="Пицца" />
             <p className={styles['message']}>Ваш заказ успешно оформлен!</p>
             <Button className={styles['button']} appearance='big' onClick={() => navigate('/')}>Сделать новый</Button>
         </div>
