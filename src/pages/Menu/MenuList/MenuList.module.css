@@ -7,5 +7,30 @@
 .list {
     display: flex;
     flex-wrap: wrap;
-    gap: 45px;
+    justify-content: center;
+    width: 100%;
+    --gap: 45px;
+    --offsets: 2;
+    gap: var(--gap);
+}
+
+.card {
+    display: flex;
+    min-height: 247px;
+    width: calc((100% - (var(--gap) * var(--offsets))) / (var(--offsets) + 1));
+    min-width: 200px;
+}
+
+@media(max-width: 1100px) {
+    .list {
+        --gap: 30px;
+        --offsets: 1;
+    }
+}
+
+@media(max-width: 450px) {
+    .list {
+        --gap: 15px;
+        --offsets: 0;
+    }
 }

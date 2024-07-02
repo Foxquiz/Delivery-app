@@ -17,3 +17,23 @@
     align-items: center;
     justify-content: center;
 }
+
+@media(max-width: 900px) {
+    .layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        flex: unset;
+        padding-top: 20px;
+        height: 250px;
+    }
+
+    .content-box {
+        align-items: flex-start;
+    }
+
+    .sidebar img{
+        max-height: 100%;
+    }
+}

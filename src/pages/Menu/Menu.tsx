@@ -48,8 +48,8 @@ export function Menu() {
     return (
         <>
             <header className={styles['header']}>
-                <HeaderTitle>Меню</HeaderTitle>
-                <SearchInput name='search' placeholder="Введите блюдо или состав" onChange={search} />
+                <HeaderTitle className={styles['title']}>Меню</HeaderTitle>
+                <SearchInput className={styles['search']} name='search' placeholder="Введите блюдо или состав" onChange={search} />
             </header>
             <div className={styles['content']}>
                 {error && <>{error}</>}

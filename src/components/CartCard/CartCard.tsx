@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { CartCardProps } from './CartCard.props';
-import styles from './CartCard.module.css'
 import { AppDispatch } from '../../store/store';
 import { cartActions } from '../../store/cart.slice';
 import clsx from 'clsx';
+import styles from './CartCard.module.css'
 
 export function CartCard(props: CartCardProps) {
     const dispatch = useDispatch<AppDispatch>();

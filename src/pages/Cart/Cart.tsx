@@ -1,16 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
 import { HeaderTitle } from "../../components/HeaderTitle/HeaderTitle";
 import { AppDispatch, RootState } from "../../store/store";
-import { CartCard } from "../../components/CartCard/CartCard";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { Product } from "../../interfaces/product.interface";
 import axios from "axios";
 import { PREFIX } from "../../helpers/API";
 import Button from "../../components/Button/Button";
-import styles from './Cart.module.css'
 import { useNavigate } from "react-router-dom";
 import { cartActions } from "../../store/cart.slice";
+import { CartCard } from "../../components/CartCard/CartCard";
+import styles from './Cart.module.css'
 
 const DELIVERY_COST = 169;
 
@@ -65,7 +65,7 @@ export function Cart() {
 
     return (
         <div className={styles['cart-box']}>
-            <HeaderTitle>Корзина</HeaderTitle>
+            <HeaderTitle className={styles['cart-title']}>Корзина</HeaderTitle>
             <ul className={clsx(styles['list-items'], styles['list-reset'])}>
                 {items.map((item) => {
                     const product = cartProducts.find(product => product.id === item.id);

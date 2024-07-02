@@ -77,6 +77,37 @@
     background: var(--primary-color);
 }
 
-.button-remove{
+.button-remove {
     border: none;
+}
+
+@media(max-width: 560px) {
+    .item {
+        flex-wrap: wrap;
+        row-gap: 0;
+    }
+
+    .description-box {
+        margin-right: 0;
+    }
+
+    .count-box {
+        width: 100%;
+    }
+
+    .count-box {
+        justify-content: end;
+    }
+}
+
+@media(max-width:450px) {
+    .button {
+        width: 45px;
+        height: 45px;
+    }
+
+    .button-remove img {
+        width: 35px;
+        height: 35px;
+    }
 }

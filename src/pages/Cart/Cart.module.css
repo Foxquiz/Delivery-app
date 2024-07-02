@@ -71,3 +71,21 @@
 .order-btn {
     align-self: center;
 }
+
+@media(max-width:760px) {
+    .cart-box {
+        margin: 0 auto;
+    }
+
+    .cart-title {
+        margin: 0 auto;
+    }
+}
+
+@media(max-width:450px) {
+    .cart-title {
+        margin: 0;
+        margin-left: auto;
+    }
+
+}

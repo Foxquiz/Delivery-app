@@ -8,7 +8,7 @@ export function MenuList({ products }: MenuListProps) {
     return (
         <ul className={clsx(styles['list'], styles['list-reset'])}>
             {products.map(p => (
-                <li key={p.id}>
+                <li key={p.id} className={styles.card}>
                     <ProductCard
                         id={p.id}
                         name={p.name}

@@ -1,4 +1,11 @@
+.container {
+    max-width: 1400px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
 .layout {
+    position: relative;
     display: flex;
     min-height: 100vh;
 }
@@ -6,8 +13,56 @@
 .sidebar {
     display: flex;
     flex-direction: column;
-    padding: 30px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: clamp(180px, 22%, 255px);
+    padding: 25px;
     border-right: 1px solid var(--separator-color);
+}
+
+.sidebar-open-btn {
+    display: none;
+    position: fixed;
+    left: 15px;
+    top: 20px;
+    padding: 0;
+    background: none;
+    border: none;
+    z-index: 15;
+    transform: translateX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar-open-btn:hover,
+.sidebar-open-btn:active {
+    opacity: 0.8;
+}
+
+.sidebar-open-btn img {
+    pointer-events: none;
+}
+
+.sidebar-open-btn .avatar {
+    display: block;
+    margin: 0;
+}
+
+.sidebar-open-btn::after {
+    content: attr(data-count);
+    position: absolute;
+    top: -5px;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-light-color);
 }
 
 .client {
@@ -19,6 +74,11 @@
     height: 90px;
     margin-bottom: 21px;
     border-radius: 50%;
+}
+
+.avatar:hover,
+.avatar:active {
+    opacity: 0.8;
 }
 
 .client-name {
@@ -42,11 +102,13 @@
 .menu {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 35px;
     margin-bottom: auto;
 }
 
 .link {
+    position: relative;
     display: flex;
     gap: 10px;
     padding-left: 37px;
@@ -89,6 +151,9 @@
 }
 
 .cart-count {
+    position: absolute;
+    top: 0;
+    right: -27px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -99,4 +164,40 @@
     font-size: 12px;
     font-weight: 600;
     color: var(--text-light-color);
+}
+
+@media(max-width: 760px) {
+    .sidebar {
+        position: fixed;
+        z-index: 10;
+        background-color: var(--background-color);
+        transform: translateX(-110%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .open-sidebar {
+        transform: translateX(0);
+    }
+
+    .content-box {
+        padding: 40px 0;
+    }
+
+    .sidebar-open-btn {
+        display: block;
+    }
+
+    .sidebar-open-btn--close {
+        transform: translateX(-120%);
+    }
+}
+
+@media(max-width: 450px) {
+    .content-box {
+        gap: 20px;
+    }
+
+    .sidebar {
+        height: 100dvh;
+    }
 }
