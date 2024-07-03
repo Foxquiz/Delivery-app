@@ -28,6 +28,7 @@
 
 .title {
     margin-right: auto;
+    font-size: clamp(25px, 2.5vw, 36.413px);
 }
 
 .button-cart {
@@ -192,7 +193,7 @@
     }
 }
 
-@media(max-width: 450px) {
+@media(max-width: 500px) {
     .header {
         padding-top: 80px;
         row-gap: 15px;

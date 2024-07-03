@@ -97,6 +97,10 @@
     font-weight: 400;
     line-height: normal;
     color: #9EA1B1;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .menu {
