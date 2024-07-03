@@ -65,7 +65,7 @@ export function Login() {
                 <Button appearance="big" className={styles['login-btn']}>Вход</Button>
             </form>
             <div className={styles.link}>
-                <p className={styles.text}>Нет акканута?</p>
+                <p className={styles.text}>Нет аккаунта?</p>
                 <Link to={'/auth/register'} className={styles['register-link']}>Зарегистрироваться</Link>
             </div>
         </div>
