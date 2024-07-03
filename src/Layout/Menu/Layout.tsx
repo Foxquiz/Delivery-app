@@ -57,8 +57,7 @@ export function Layout() {
                 endTouchX > startTouchX) {
                 setSidebarState(true);
             }
-            if (startTouchX < 200 &&
-                Math.abs(endTouchY - startTouchY) < 40 &&
+            if (Math.abs(endTouchY - startTouchY) < 40 &&
                 endTouchX < startTouchX) {
                 setSidebarState(false);
             }
