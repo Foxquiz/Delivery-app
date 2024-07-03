@@ -11,17 +11,6 @@ import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-// export type RegisterForm = {
-//     email: {
-//         value: string
-//     }
-//     password: {
-//         value: string
-//     }
-//     name: {
-//         value: string
-//     }
-// }
 const RegisterSchema = z.object({
     email: z.string().email('Некорректный формат электронной почты'),
     password: z.string().min(3, 'Пароль должен содержать не менее 3 символов'),
@@ -80,7 +69,7 @@ export function Register() {
                 <Button appearance="big" className={styles['register-btn']}>Зарегистрироваться</Button>
             </form>
             <div className={styles.link}>
-                <p className={styles.text}>Есть акканут?</p>
+                <p className={styles.text}>Есть аккаунт?</p>
                 <Link to={'/auth/login'} className={styles['login-link']}>Войти</Link>
             </div>
         </div>
