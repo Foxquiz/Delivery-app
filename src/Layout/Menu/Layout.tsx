@@ -7,6 +7,7 @@ import { AppDispatch, RootState } from "../../store/store";
 import { getProfile, userActions } from "../../store/user.slice";
 import { useEffect, useRef, useState } from "react";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
+import { cartActions } from "../../store/cart.slice";
 
 export function Layout() {
     const navigate = useNavigate();
@@ -17,7 +18,8 @@ export function Layout() {
     const [sidebarState, setSidebarState] = useState(false);
 
     const logout = () => {
-        dispatch(userActions.logout())
+        dispatch(userActions.logout());
+        dispatch(cartActions.clean());
         navigate('/auth/login');
     }
 
