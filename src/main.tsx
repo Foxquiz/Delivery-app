@@ -25,7 +25,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Suspense fallback={<>Loading menu...</>}><Menu /></Suspense>
+        element: <Suspense fallback={<>Загружаем меню...</>}><Menu /></Suspense>
       },
       {
         path: '/cart',

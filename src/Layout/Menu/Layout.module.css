@@ -17,7 +17,8 @@
     top: 0;
     height: 100vh;
     width: clamp(180px, 22%, 255px);
-    padding: 25px;
+    row-gap: 47px;
+    padding: 25px 25px 25px 10px;
     border-right: 1px solid var(--separator-color);
 }
 
@@ -53,20 +54,18 @@
     position: absolute;
     top: -5px;
     right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 22px;
-    height: 22px;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    padding: 3px;
     border-radius: 50%;
     background-color: var(--primary-color);
     font-size: 12px;
     font-weight: 600;
     color: var(--text-light-color);
-}
-
-.client {
-    margin-bottom: 47px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .avatar {
@@ -88,6 +87,10 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .client-email {
@@ -144,6 +147,7 @@
     gap: 9px;
     justify-content: center;
     align-items: center;
+    align-self: center;
 }
 
 .content-box {
@@ -158,21 +162,26 @@
     position: absolute;
     top: 0;
     right: -27px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: inline-block;
     width: 22px;
     height: 22px;
+    padding: 3px;
     border-radius: 50%;
     background-color: var(--primary-color);
     font-size: 12px;
     font-weight: 600;
     color: var(--text-light-color);
+    text-align: center;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 @media(max-width: 760px) {
     .sidebar {
         position: fixed;
+        row-gap: 20px;
         z-index: 10;
         background-color: var(--background-color);
         transform: translateX(-110%);
@@ -203,5 +212,15 @@
 
     .sidebar {
         height: 100dvh;
+    }
+}
+
+@media(max-height: 420px) {
+    .avatar {
+        display: none;
+    }
+
+    .menu {
+        gap: 20px;
     }
 }

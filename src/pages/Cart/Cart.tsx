@@ -87,8 +87,10 @@ export function Cart() {
         }
         return acc += product.price * item.count;
     }, 0);
-
+    
     const total = productsSum + DELIVERY_COST;
+
+    const cartCount = items.reduce((acc, item) => acc += item.count, 0);
 
     return (
         <div className={styles['cart-box']}>
@@ -126,7 +128,7 @@ export function Cart() {
                 </li>
                 <li className={styles['item-cost']}>
                     <h3 className={styles['cost-title']}>Итого по заказу
-                        <span className={styles['items-count']}>&nbsp;&nbsp;&nbsp;({items.length})</span>
+                        <span className={styles['items-count']}>&nbsp;&nbsp;&nbsp;({cartCount})</span>
                     </h3>
                     <p className={styles['cost-value']}>
                         {total}
